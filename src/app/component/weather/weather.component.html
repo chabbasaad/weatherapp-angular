@@ -1,0 +1,37 @@
+<div class="card my-5">
+    <div class="card-header bg-primary text-white text-center">
+      <h3>{{ weatherData.name }} Weather</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" class="form-inline justify-content-center mb-3">
+        <div class="form-group">
+          <label for="country" class="mr-2">Country:</label>
+          <input type="text" class="form-control mr-2" id="country" [(ngModel)]="country" name="country">
+          <button type="submit" class="btn btn-primary">Get Weather</button>
+        </div>
+      </form>
+      <div class="row" *ngIf="weatherData">
+        <div class="col-md-6">
+          <div class="card bg-light mb-3">
+            <div class="card-body">
+              <p><strong>Temperature:</strong> {{ weatherData.main.temp }}&deg;C</p>
+              <p><strong>Feels like:</strong> {{ weatherData.main.feels_like }}&deg;C</p>
+              <p><strong>Minimum temperature:</strong> {{ weatherData.main.temp_min }}&deg;C</p>
+              <p><strong>Maximum temperature:</strong> {{ weatherData.main.temp_max }}&deg;C</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card bg-light mb-3">
+            <div class="card-body">
+              <p><strong>Humidity:</strong> {{ weatherData.main.humidity }}%</p>
+              <p><strong>Pressure:</strong> {{ weatherData.main.pressure }} hPa</p>
+              <p><strong>Wind speed:</strong> {{ weatherData.wind.speed }} m/s</p>
+              <p><strong>Wind direction:</strong> {{ weatherData.wind.deg }}&deg;</p>
+              <img [src]="weatherIcon" alt="Weather Icon" class="mx-auto d-block mb-3" width="50" height="50">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
